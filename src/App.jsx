@@ -2,6 +2,7 @@ import React from 'react'
 import Loader from './components/common/Loader'
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Header from './components/Header'
+import Error from './components/common/Error'
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
 </Routes>
 <h1>this is my footer</h1>
    </Router>
-   
+   <Error/>
    </>
 
   )
