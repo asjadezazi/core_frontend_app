@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Error from './components/common/Error'
 import Footer from './components/common/Footer'
+import Home from './pages/protected/Home'
+import Search from './pages/protected/Search'
+
 
 const App = () => {
   return (
@@ -12,11 +15,8 @@ const App = () => {
       <Router>
     <Header />
         <Routes>
-          <Route exact path='/' element={<></>}/>
-          <Route exact path='/home' element={<h1>Home</h1>} />
-          <Route exact path='/search' element={<h1>search</h1>} />
-          <Route exact path='/about' element={<h1>about</h1>} />
-          <Route exact path='/contact' element={<h1>contact</h1>} />
+          <Route exact path='/' element={<Home/>} />
+          <Route exact path='/search' element={<Search/>} />
           <Route  path='*' element={<Error/>} />
         </Routes>
       <Footer/>
