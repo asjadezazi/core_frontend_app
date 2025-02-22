@@ -20,9 +20,9 @@ const Navbar = () => {
     >
 <Link to={"/"}><GoHome size={33}/></Link>
 <Link to={"/search"}><IoIosSearch size={33} /></Link>
-<TbEdit size={33} />
-<CiHeart size={33} />
-<RxAvatar size={33} />
+<Link to={"edit"}> <TbEdit size={33}/></Link>
+<Link to={"/heart"}> <CiHeart size={33}/></Link>
+<Link to={"/avatar"}> <RxAvatar  size={33} /></Link>
 
     </Stack>
     </>

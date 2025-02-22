@@ -5,6 +5,9 @@ import Error from './components/common/Error'
 import Footer from './components/common/Footer'
 import Home from './pages/protected/Home'
 import Search from './pages/protected/Search'
+import Edit from './pages/protected/Edit'
+import Heart from './pages/protected/Heart'
+import Avatar from './pages/protected/Avatar'
 
 
 const App = () => {
@@ -16,6 +19,9 @@ const App = () => {
         <Routes>
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/search' element={<Search/>} />
+          <Route exact path='/edit' element={<Edit/>} />
+          <Route exact path='/heart' element={<Heart/>}/>
+          <Route exact path='/Avatar' element={<Avatar/>} />
           <Route  path='*' element={<Error/>} />
         </Routes>
       <Footer/>
