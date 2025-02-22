@@ -1,7 +1,6 @@
 import React from 'react'
-import Loader from './components/common/Loader'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
+import Header from './components/common/Header'
 import Error from './components/common/Error'
 import Footer from './components/common/Footer'
 import Home from './pages/protected/Home'
