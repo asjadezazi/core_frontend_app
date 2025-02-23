@@ -8,13 +8,13 @@ import Search from './pages/protected/Search'
 import Edit from './pages/protected/Edit'
 import Heart from './pages/protected/Heart'
 import Avatar from './pages/protected/Avatar'
-
+import Register from './pages/Register'
 
 const App = () => {
   return (
 
     <>
-      <Router>
+      {/* <Router>
     <Header />
         <Routes>
           <Route exact path='/' element={<Home/>} />
@@ -25,7 +25,8 @@ const App = () => {
           <Route  path='*' element={<Error/>} />
         </Routes>
       <Footer/>
-      </Router>
+      </Router> */}
+<Register/>
     </>
   )
 }

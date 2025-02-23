@@ -23,7 +23,6 @@ const Navbar = () => {
 <Link to={"edit"}> <TbEdit size={33}/></Link>
 <Link to={"/heart"}> <CiHeart size={33}/></Link>
 <Link to={"/avatar"}> <RxAvatar  size={33} /></Link>
-
     </Stack> 
     </>
   )
