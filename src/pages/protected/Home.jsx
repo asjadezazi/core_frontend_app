@@ -1,11 +1,11 @@
 import React from 'react'
 import {Stack} from '@mui/material';
-import InputPost from '../../components/home/InputPost'
+import Inputpost from '../../components/home/InputPost'
 
 const Home = () => {
   return (
     <>
-    <InputPost/>
+    <Inputpost/>
     <Stack
     flexDirection={"column"}
     gap={2}
