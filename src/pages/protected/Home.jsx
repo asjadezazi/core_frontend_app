@@ -1,6 +1,8 @@
 import React from 'react'
 import {Stack} from '@mui/material';
 import Inputpost from '../../components/home/InputPost'
+import Post from '../../components/home/Post'
+
 
 const Home = () => {
   return (
@@ -11,16 +13,8 @@ const Home = () => {
     gap={2}
     mb={10}
     >
-<p>post</p>
-<p>post</p>
-<p>post</p>
-<p>post</p>
-<p>post</p>
-<p>post</p>
-<p>post</p>
-<p>post</p>
-<p>post</p>
 
+<Post/>
     </Stack>
     </>
   )
