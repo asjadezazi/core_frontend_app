@@ -15,6 +15,12 @@ const Home = () => {
     >
 
 <Post/>
+<Post/>
+<Post/>
+<Post/>
+<Post/>
+<Post/>
+
     </Stack>
     </>
   )

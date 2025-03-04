@@ -5,17 +5,21 @@ import { Stack, Badge, Avatar, Stepper, AvatarGroup } from "@mui/material";
 const Post1 = () => {
     return (
         <>
-            <Stack
-                flexDirection={"column"}
-                alignItems={"center"}
-                justifyContent={"space-between"}
+<Stack
+     flexDirection={"column"}
+     alignItems={"center"}
+     justifyContent={"space-between"}
+            
             >
-                <Badge overlap="circular"
-                    anchorOrigin={{
+                
+            <Badge 
+                overlap="circular"
+                anchorOrigin={{
                         vertical: "bottom",
                         horizontal: "right"
                     }}
-                    badgeContent={<Avatar
+                    badgeContent={
+                    <Avatar
                         sx={{
                             width: 20,
                             height: 20,
@@ -24,14 +28,16 @@ const Post1 = () => {
                             right: 4,
                             bottom: 4
                         }}
+
                     >+</Avatar >} >
+
                     <Avatar
                         sx={{
                             width: 40,
                             height: 40,
 
                         }}
-                    ></Avatar>
+                    > </Avatar>
                 </Badge>
                 <Stack
                     flexDirection={"column"}
@@ -45,10 +51,8 @@ const Post1 = () => {
                         orientation="vertical"
                         sx={{
                             border: "0.1rem solid gray",
-                            height: "100vh",
+                            height: "100%",
                             width: "0px"
-
-
                         }}
                     >
 
