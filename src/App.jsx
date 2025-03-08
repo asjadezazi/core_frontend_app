@@ -12,6 +12,10 @@ import Avatar from './pages/protected/Avatar'
 import Register from './pages/Register'
 import { HiH1 } from 'react-icons/hi2';
 import Protectedlayout from './pages/protected/Protectedlayout';
+import Profilelayout from './pages/protected/profile/Profilelayout';
+import Insta from './pages/protected/profile/Insta';
+import Replies from './pages/protected/profile/Replies';
+import Repost from './pages/protected/profile/Repost';
 
 const App = () => {
   return (
@@ -20,18 +24,26 @@ const App = () => {
   <Box minHeight={"100vh"}>
      <Router>
       <Routes>
-        <Route>
+       
 
-          <Route exact path='/' element = {<Protectedlayout/>} />
-          <Route exact path='home' element = {<Home/>} />
+          <Route exact path='/' element = {<Protectedlayout/>} >
+          <Route exact path='' element = {<Home/>} />
           <Route exact path='post/:id' element = {<h1> Single Post </h1>} />
           <Route exact path='search' element = {<Search/>} />
+
+          <Route exact path='profile' element = {<Profilelayout/>} > 
+          <Route exact path='insta/:id' element = {<Insta/>} />
+          <Route exact path='replies/:id' element = {<Replies/>} />
+          <Route exact path='repost/:id' element = {<Repost/>} />
+          
+          
+
+          </Route>
 
 
         </Route>
       </Routes>
      </Router>
-     
      </Box>
     </>
   )
