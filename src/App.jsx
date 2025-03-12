@@ -30,6 +30,8 @@ const App = () => {
           <Route exact path='' element = {<Home/>} />
           <Route exact path='post/:id' element = {<h1> Single Post </h1>} />
           <Route exact path='search' element = {<Search/>} />
+          <Route exact path='avatar' element = {<Avatar/>} />
+
 
           <Route exact path='profile' element = {<Profilelayout/>} > 
           <Route exact path='insta/:id' element = {<Insta/>} />
