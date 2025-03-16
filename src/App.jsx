@@ -16,6 +16,7 @@ import Profilelayout from './pages/protected/profile/Profilelayout';
 import Insta from './pages/protected/profile/Insta';
 import Replies from './pages/protected/profile/Replies';
 import Repost from './pages/protected/profile/Repost';
+import SinglePost from './pages/protected/SinglePost';
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
 
           <Route exact path='/' element = {<Protectedlayout/>} >
           <Route exact path='' element = {<Home/>} />
-          <Route exact path='post/:id' element = {<h1> Single Post </h1>} />
+          <Route exact path='post/:id' element = {<SinglePost/>} />
           <Route exact path='search' element = {<Search/>} />
           <Route exact path='avatar' element = {<Avatar/>} />
 
@@ -44,6 +45,8 @@ const App = () => {
 
 
         </Route>
+        <Route exact path='register' element = {<Register/>} /> 
+
       </Routes>
      </Router>
      </Box>
