@@ -21,7 +21,7 @@ const EditShare = () => {
           Edit profile
         </Button>
 
-        <Button
+        {/* <Button
           size="medium"
           sx={{
             border: "1px solid gray",
@@ -33,8 +33,8 @@ const EditShare = () => {
           }}
         >
           Share profile
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           size="medium"
           sx={{
             border: "1px solid gray",
@@ -45,7 +45,7 @@ const EditShare = () => {
           }}
         >
           <MdOutlinePersonAdd size={30} />
-        </Button>
+        </Button> */}
       </Stack>
     </>
   );

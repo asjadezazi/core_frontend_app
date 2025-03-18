@@ -1,13 +1,16 @@
 import React from "react"
 import { Stack, Avatar, Typography, Button } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 const Inputpost = () => {
+  const _700 = useMediaQuery('(min-width:700px)');
     return (
         <>
             <Stack
                 flexDirection={"row"}
                 alignItems={"center"}
-                width={"75%"}
+                width={_700 ? "75%" : "90%"}
                 height={28}
                 justifyContent={"space-between"}
                 padding={3}
@@ -23,7 +26,7 @@ const Inputpost = () => {
 
                 >
                     <Avatar />
-                    <Typography color="black" > Start your post </Typography>
+                    <Typography color="black" fontSize={_700 ? "1.2rem" : "1rem"}> Start your post </Typography>
                 </Stack>
                 <Button size="medium" sx={{ bgcolor: "gray", color: "aliceblue", ":hover": { bgcolor: "black", cursor: "pointer" } }}>Post</Button>
             </Stack>

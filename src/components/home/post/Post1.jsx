@@ -1,15 +1,18 @@
 import React from 'react'
 import { Stack, Badge, Avatar, Stepper, AvatarGroup } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 
 const Post1 = () => {
+    const _700 = useMediaQuery("(min-width:700px)")
     return (
         <>
 <Stack
      flexDirection={"column"}
      alignItems={"center"}
      justifyContent={"space-between"}
-            
+            width={"70%"}
             >
                 
             <Badge 
