@@ -2,8 +2,19 @@ import React from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Stack } from '@mui/material';
 import Navbar from './Navbar'
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useState } from 'react';
 
 const Header = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       {/* <Stack direction="row" spacing={2}> */}
@@ -27,7 +38,30 @@ const Header = () => {
         >
         <Navbar />
   </Stack>
-       <RxHamburgerMenu size={36} color='gray' cursor={"pointer"} className='img-icon'/> 
+  <Stack flexDirection={"column"}>
+       <RxHamburgerMenu size={36} color='gray' cursor={"pointer"} className='img-icon'
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+       /> 
+       <Menu
+      
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+        
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
+      </Stack>
         </Stack>
       {/* </Stack> */}
     </>

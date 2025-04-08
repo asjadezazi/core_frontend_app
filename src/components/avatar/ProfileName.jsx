@@ -31,7 +31,7 @@ const ProfileName = () => {
        >
        <FaAt size={36}  cursor={"pointer"} />
        <CiSquarePlus size={36}  cursor={"pointer"} />
-       <RxHamburgerMenu size={36}  cursor={"pointer"} />
+       {/* <RxHamburgerMenu size={36}  cursor={"pointer"} /> */}
        
        </Stack>
 

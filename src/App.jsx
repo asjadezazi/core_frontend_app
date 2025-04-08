@@ -17,6 +17,9 @@ import Insta from "./pages/protected/profile/Insta";
 import Replies from "./pages/protected/profile/Replies";
 import Repost from "./pages/protected/profile/Repost";
 import SinglePost from "./pages/protected/SinglePost";
+import AddPost from "./components/modals/AddPost";
+import EditProfile from "./components/modals/EditProfile";
+
 
 const App = () => {
   const response = true
@@ -33,9 +36,11 @@ const App = () => {
                 <Route exact path="post/:id" element={<SinglePost />} />
                 <Route exact path="search" element={<Search />} />
                 <Route exact path="avatar" element={<Avatar />} />
+                <Route exact path="edit" element={<EditProfile />} />
+
 
                 <Route exact path="profile" element={<Profilelayout />}>
-                  <Route exact path="insta/:id" element={<Insta />} />
+                  <Route exact path="insta" element={<Insta />} />
                   <Route exact path="replies/:id" element={<Replies />} />
                   <Route exact path="repost/:id" element={<Repost />} />
                 </Route>
