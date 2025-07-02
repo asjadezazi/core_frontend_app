@@ -15,7 +15,7 @@ const Protectedlayout = () => {
     overflow={"hidden"}
     >
         <Header/>
-        {/* <AddPost/> */}
+        <AddPost/>
         <Outlet/>
     
     </Stack>

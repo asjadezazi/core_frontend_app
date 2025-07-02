@@ -31,12 +31,12 @@ const App = () => {
         <Router>
           <Routes>
             {response ? (
-              <Route exact path="/" element={<Protectedlayout />}>
+              <Route exact path="/" element={<Protectedlayout />}>  
                 <Route exact path="" element={<Home />} />
                 <Route exact path="post/:id" element={<SinglePost />} />
                 <Route exact path="search" element={<Search />} />
                 <Route exact path="avatar" element={<Avatar />} />
-                <Route exact path="edit" element={<EditProfile />} />
+                <Route exact path="edit" element={<AddPost />} />
 
 
                 <Route exact path="profile" element={<Profilelayout />}>

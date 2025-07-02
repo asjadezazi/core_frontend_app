@@ -12,15 +12,21 @@ import {
 } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import { FaImages } from "react-icons/fa";
+import { addPostModal } from "../../redux/slice";
+import { useDispatch , useSelector} from "react-redux";
 
 const AddPost = () => {
+  const {openAddPostModal} = useSelector((state)=>state.service)
+  const dispatch = useDispatch();
   const _700 = useMediaQuery("(min-width : 700px)");
   const _500 = useMediaQuery("(min-width : 500px)");
   const _300 = useMediaQuery("(min-width : 300px)");
   const [text, setText] = useState();
   const [media, setMedia] = useState();
   const mediaRef = useRef();
-  const handleClose = () => {};
+  const handleClose = () => {
+    dispatch(addPostModal(false));
+  };
 
   const handleMedia = () => {
     mediaRef.current.click();
@@ -30,12 +36,12 @@ const AddPost = () => {
   return (
     <>
       <Dialog
-        open={true}
+        open={openAddPostModal}
         onClose={handleClose}
         fullScreen={_700 ? false : true}
       >
         <Box position={"absolute"} top={20} right={20} onClick={handleClose}>
-          <RxCross2 size={28} className="image-icon" />
+          <RxCross2 size={28} className="image-icon" onClick={handleClose} />
         </Box>
         <DialogTitle textAlign={"center"} mb={5}>
           New post
