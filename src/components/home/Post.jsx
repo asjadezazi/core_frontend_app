@@ -56,7 +56,7 @@ const Post = () => {
                     >
                         20h
                     </Typography>
-                    <IoIosMore size={28} />
+                    <IoIosMore size={28} />     
                 </Stack>
 
             </Stack>
