@@ -1,12 +1,18 @@
 import React from 'react'
 import { Stack, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 
 const Bio = () => {
+      const {darkMode} = useSelector((state)=>state.service)
+  
   return (
     <>
 <Stack
-flexDirection={"column"}
+flexDirection={"column"
+  
+}
+color={darkMode?"white":"black"}
 >
 <Typography
  fontWeight={"bold "}

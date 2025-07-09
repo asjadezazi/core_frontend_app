@@ -11,7 +11,7 @@ const EditButton = () => {
 
   return (
    <>
-   <Button size='28' sx={{border:"2px solid black" , color:"black" , fontWeight:"bold" , fontSize:17}} onClick={handleOpenProfile}>Edit</Button>
+   <Button size='28' sx={{border:"2px solid gray" , color:"gray" , fontWeight:"bold" , fontSize:17}} onClick={handleOpenProfile}>Edit</Button>
    </>
   )
 }

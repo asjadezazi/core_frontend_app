@@ -13,6 +13,7 @@ const Post1 = () => {
      alignItems={"center"}
      justifyContent={"space-between"}
             width={"70%"}
+            // bgcolor={'black'}
             >
                 
             <Badge 
@@ -54,9 +55,10 @@ const Post1 = () => {
                         orientation="vertical"
                         sx={{
                             border: "0.1rem solid gray",
-                            height: "100%",
+                            height: "80%",
                             width: "0px"
                         }}
+                        
                     >
 
                     </Stepper >

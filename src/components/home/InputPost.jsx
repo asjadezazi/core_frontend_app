@@ -1,11 +1,12 @@
 import React from "react"
 import { Stack, Avatar, Typography, Button } from "@mui/material";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { addPostModal } from "../../redux/slice";
 
 
 const Inputpost = () => {
+    const {darkMode} = useSelector((state)=>state.service)
     const dispatch = useDispatch()
     const abc = () =>{
      dispatch(addPostModal(true))
@@ -23,6 +24,7 @@ const Inputpost = () => {
                 my={5}
                 mx={"auto"}
                 borderBottom={"solid 2px gray"}
+                bgcolor={darkMode ? "black" : "white"}
 
             >
                 <Stack
@@ -32,7 +34,9 @@ const Inputpost = () => {
 
                 >
                     <Avatar />
-                    <Typography color="black" fontSize={_700 ? "1.2rem" : "1rem"} onClick={abc} sx={{cursor:"pointer"}}> Start your post </Typography>
+                    <Typography color={darkMode? "white": "black"} fontSize={_700 ? "1.2rem" : "1rem"} onClick={abc} sx={{cursor:"pointer"}}
+                    
+                    > Start your post </Typography>
                 </Stack>
                 <Button size="medium" sx={{ bgcolor: "gray", color: "aliceblue", ":hover": { bgcolor: "black", cursor: "pointer" } }}>Post</Button>
             </Stack>

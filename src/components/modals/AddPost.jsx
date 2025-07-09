@@ -16,7 +16,8 @@ import { addPostModal } from "../../redux/slice";
 import { useDispatch , useSelector} from "react-redux";
 
 const AddPost = () => {
-  const {openAddPostModal} = useSelector((state)=>state.service)
+  const {openAddPostModal ,darkMode} = useSelector((state)=>state.service)
+
   const dispatch = useDispatch();
   const _700 = useMediaQuery("(min-width : 700px)");
   const _500 = useMediaQuery("(min-width : 500px)");
@@ -39,6 +40,7 @@ const AddPost = () => {
         open={openAddPostModal}
         onClose={handleClose}
         fullScreen={_700 ? false : true}
+        
       >
         <Box position={"absolute"} top={20} right={20} onClick={handleClose}>
           <RxCross2 size={28} className="image-icon" onClick={handleClose} />

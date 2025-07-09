@@ -16,7 +16,7 @@ import { useDispatch , useSelector} from "react-redux";
 
 
 const EditProfile = () => {
-  const {openEditProfileModal} = useSelector((state)=>state.service)
+  const {openEditProfileModal} = useSelector((state)=>state.service);
   const dispatch = useDispatch()
 
   const _700 = useMediaQuery("(min-width : 700px)");
