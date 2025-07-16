@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import serviceReducer from "./slice";
-import { serviceApi } from "./service";
+import { serviceApi } from "./service.js";
 
 export default configureStore({
   reducer: {
@@ -12,3 +12,4 @@ export default configureStore({
       serviceApi.middleware
 ),
 });
+
