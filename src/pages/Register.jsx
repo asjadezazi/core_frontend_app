@@ -1,19 +1,24 @@
-import { Stack, Typography, TextField, Button } from "@mui/material";
-import { useState, useEffect } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useSigninMutation, useLoginMutation } from "../redux/service";
+import {
+  Button,
+  Stack,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import { useLoginMutation, useSigninMutation } from "../redux/service";
+import { Bounce, toast } from "react-toastify";
 
 const Register = () => {
-  const [login, setLogin] = useState(false);
-
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const _700 = useMediaQuery("(min-width:700px)");
 
   const [signinUser, signinUserData] = useSigninMutation();
   const [loginUser, loginUserData] = useLoginMutation();
+
+  const [login, setLogin] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const toggleLogin = () => {
     setLogin((pre) => !pre);
@@ -25,62 +30,93 @@ const Register = () => {
       password,
     };
     await loginUser(data);
-    console.log("handleLogin", data);
   };
-  const signupHandle = async () => {
+
+  const handleRegister = async () => {
     const data = {
-      username,
+      userName,
       email,
       password,
     };
-    console.log("signupHandle", data);
     await signinUser(data);
-    // console.log("hello");
   };
-  // useEffect(() => {
-  //   if (signinUserData.isSuccess) {
-  //     console.log("signinUserData success>>>>>>>> ", signinUserData.data.msg);
-  //   }
-  //   if (signinUserData.isError) {
-  //     console.log("signinUserData error>>>>>>>>", signinUserData.error.data.msg);
-  //   }
-  // }, [signinUserData.isSuccess, signinUserData.isError]);
+
+  useEffect(() => {
+    if (signinUserData.isSuccess) {
+      toast.success(signinUserData.data.msg, {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+    if (signinUserData.isError) {
+      toast.error(signinUserData.error.data.msg, {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  }, [signinUserData.isSuccess, signinUserData.isError]);
+
+
 
   return (
     <>
       <Stack
         width={"100%"}
         height={"100vh"}
+        flexDirection={"row"}
         justifyContent={"center"}
         alignItems={"center"}
-        flexDirection={"row"}
+        sx={
+          _700
+            ? {
+                backgroundImage: 'url("/register-bg.webp")',
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "100% 600px",
+              }
+            : null
+        }
       >
-        <Stack width={_700 ? "40%" : "90%"} gap={2} flexDirection={"column"}>
+        <Stack
+          flexDirection={"column"}
+          width={_700 ? "40%" : "90%"}
+          gap={2}
+          mt={_700 ? 20 : 0}
+        >
           <Typography
             variant="h5"
             fontSize={_700 ? "1.5rem" : "1rem"}
             fontWeight={"bold"}
             alignSelf={"center"}
           >
-            {login ? "Login with email" : "Register with email"}
+            {login ? " Login with email" : " Register with email"}
           </Typography>
-
           {login ? null : (
             <TextField
               variant="outlined"
-              placeholder="Enter Your Name"
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your userName..."
+              onChange={(e) => setUserName(e.target.value)}
             />
           )}
-
           <TextField
             variant="outlined"
-            placeholder="Enter Your Email"
+            placeholder="Enter your Email..."
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
-            placeholder="Enter Your Password"
+            placeholder="Enter your Password..."
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button
@@ -91,22 +127,24 @@ const Register = () => {
               bgcolor: "green",
               color: "white",
               fontSize: "1rem",
-              ":hover": { bgcolor: "blue", cursor: "pointer" },
+              ":hover": {
+                bgcolor: "blue",
+                cursor: "pointer",
+              },
             }}
-            onClick={login ? handleLogin : signupHandle}
+            onClick={login ? handleLogin : handleRegister}
           >
-            {login ? "login" : "sign up"}
+            {login ? "Login" : "  Sign Up"}
           </Button>
-
           <Typography
+            variant="subtitle2"
             fontSize={_700 ? "1.3rem" : "1rem"}
             alignSelf={"center"}
-            variant="subtitle2"
           >
-            {login ? "Don't have an account ?" : "Already have an account ? "}
-
+            {login ? "Don`t have an account ?" : " Already have an accout ?"}
             <span className="login-link" onClick={toggleLogin}>
-              {login ? "sign up " : "login"}
+              {" "}
+              {login ? "Sign up" : "Login"}
             </span>
           </Typography>
         </Stack>

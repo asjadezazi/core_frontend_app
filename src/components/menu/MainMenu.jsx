@@ -2,16 +2,20 @@ import React from "react";
 import { Menu, MenuItem } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleMainMenu , toggleColorMode } from "../../redux/slice";
+// import {useLogoutMutation} from "../../redux/service"
 
 const MainMenu = () => {
+  // const [logoutUser , logoutUserData] = useLogoutMutation()
   const dispatch = useDispatch();
   const { anchorE1 } = useSelector((state) => state.service);
   const handleClose = () => {
     dispatch(toggleMainMenu(null));
   };
-  const logout = () => {
+  const logout =  () => {
+    // await logoutUser();
     handleClose();
   };
+  // console.log(logoutUser)
   const account = () => {
     handleClose();
   };

@@ -3,36 +3,47 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const serviceApi = createApi({
   reducerPath: "serviceApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:9000/api/",
+    baseUrl: "http://localhost:9000",
     credentials: "include",
+    // 
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      return headers;
+    },
+    //       
   }),
   keepUnusedDataFor: 60 * 60 * 24 * 7,
   tagTypes: ["Post", "User", "Me"],
   endpoints: (builder) => ({
     signin: builder.mutation({
       query: (data) => (
-        console.log("service wala signin", data),
+        console.log(data),
         {
-          url: "register",
+          url: "/api/register",
           method: "POST",
           body: data,
         }
       ),
-      invalidDateTags: ["Me"],
+      invalidateTags: ["Me"],
     }),
+
     login: builder.mutation({
-      query: (data) => (
-        console.log("service wala login", data),
-        {
-          url: "login",
-          method: "POST",
-          body: data,
-        }
-      ),
-      invalidDateTags: ["Me"],
+      query: (data) => ({
+        url: "/api/login",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Me"],
     }),
+    // logout: builder.mutation({
+    //   query: () => ({
+    //     url: "/api/logout",
+    //     method: "POST",
+    //     body: null,
+    //   }),
+    //   invalidatesTags: ["Me"],
+    // }),
   }),
 });
 
-// export const { useSigninMutation } = serviceApi;
-export const { useSigninMutation, useLoginMutation } = serviceApi;
+export const { useSigninMutation, useLoginMutation , useLogoutMutation} = serviceApi;
