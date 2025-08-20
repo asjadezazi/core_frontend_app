@@ -28,9 +28,6 @@ const Protectedlayout = () => {
       <MyMenu/>
       <MainMenu/>
         <Outlet/>
-        {/* <SinglePost/> */}
-
-    
     </Stack>
     </>
   )

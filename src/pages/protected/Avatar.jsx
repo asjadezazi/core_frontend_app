@@ -17,7 +17,6 @@ const Avatar = () => {
     <Stack
     flexDirection={"column"}
     m={"auto"}
-    // justifyContent={"space-between"}
     gap={3}
     bgcolor={darkMode?"black":'white'}
     >

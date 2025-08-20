@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 import { RxAvatar } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { useDispatch , useSelector } from "react-redux";
-import {addPostModal, toggleColorMode} from "../../redux/slice"
+import {addPostModal, toggleColorMode} from "../../redux/slice";
 
 const Navbar = () => {
   const {darkMode} = useSelector((state)=>state.service)

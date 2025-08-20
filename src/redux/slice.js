@@ -7,7 +7,8 @@ export const seviceSlice = createSlice({
     openEditProfileModal: false,
     anchorE1: null,
     anchorE2: null,
-    darkMode : false,
+    darkMode: false,
+    myInfo: null,
   },
   reducers: {
     addPostModal: (state, action) => {
@@ -22,13 +23,22 @@ export const seviceSlice = createSlice({
     toggleMyMenu: (state, action) => {
       state.anchorE2 = action.payload;
     },
-    toggleColorMode : (state) =>{
-    state.darkMode = !state.darkMode;
-    }
+    toggleColorMode: (state) => {
+      state.darkMode = !state.darkMode;
+    },
+    addMyInfo: (state, action) => {
+      state.myInfo = action.payload.me;
+    },
   },
 });
 
-export const { addPostModal, editProfileModal, toggleMainMenu ,toggleMyMenu, toggleColorMode} =
-  seviceSlice.actions;
+export const {
+  addPostModal,
+  editProfileModal,
+  toggleMainMenu,
+  toggleMyMenu,
+  toggleColorMode,
+  addMyInfo
+} = seviceSlice.actions;
 
 export default seviceSlice.reducer;

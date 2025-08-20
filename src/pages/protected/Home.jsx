@@ -17,7 +17,6 @@ const Home = () => {
     flexDirection={"column"}
     gap={2}
     mb={10}
-    // bgcolor={'black'}
     >
 
 <Post/>

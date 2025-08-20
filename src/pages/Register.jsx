@@ -5,9 +5,11 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState  } from "react";
 import { useLoginMutation, useSigninMutation } from "../redux/service";
 import { Bounce, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
   const _700 = useMediaQuery("(min-width:700px)");
@@ -19,6 +21,7 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   const toggleLogin = () => {
     setLogin((pre) => !pre);
@@ -52,6 +55,7 @@ const Register = () => {
         draggable: true,
         theme: "colored",
         transition: Bounce,
+        
       });
     }
     if (signinUserData.isError) {
@@ -133,6 +137,7 @@ const Register = () => {
               },
             }}
             onClick={login ? handleLogin : handleRegister}
+            // onSubmit={handleRegister}
           >
             {login ? "Login" : "  Sign Up"}
           </Button>

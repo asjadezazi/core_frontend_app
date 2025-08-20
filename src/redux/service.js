@@ -1,16 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { addMyInfo } from "./slice";
 
 export const serviceApi = createApi({
   reducerPath: "serviceApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:9000",
     credentials: "include",
-    // 
+    //  credentials: true,
+    //
     prepareHeaders: (headers) => {
       headers.set("Content-Type", "application/json");
       return headers;
     },
-    //       
+    //
   }),
   keepUnusedDataFor: 60 * 60 * 24 * 7,
   tagTypes: ["Post", "User", "Me"],
@@ -35,15 +37,34 @@ export const serviceApi = createApi({
       }),
       invalidatesTags: ["Me"],
     }),
-    // logout: builder.mutation({
-    //   query: () => ({
-    //     url: "/api/logout",
-    //     method: "POST",
-    //     body: null,
-    //   }),
-    //   invalidatesTags: ["Me"],
-    // }),
+    myInfo: builder.query({
+      query: () => ({
+        url: "/api/me",
+        method: "GET",
+      }),
+      providesTags: ["Me"],
+      async onQueryStarted(params, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(addMyInfo(data));
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
+        logout: builder.mutation({
+      query: () => ({
+        url: "/api/logout",
+        method: "POST",
+      }),
+      invalidatesTags: ["Me"],
+    }),
   }),
 });
 
-export const { useSigninMutation, useLoginMutation , useLogoutMutation} = serviceApi;
+export const {
+  useSigninMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useMyInfoQuery,
+} = serviceApi;

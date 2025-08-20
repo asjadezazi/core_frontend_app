@@ -1,30 +1,39 @@
 import React from "react";
 import { Menu, MenuItem } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleMainMenu , toggleColorMode } from "../../redux/slice";
-// import {useLogoutMutation} from "../../redux/service"
+import { toggleMainMenu, toggleColorMode, addMyInfo } from "../../redux/slice";
+import { useLogoutMutation } from "../../redux/service";
 
+import { useEffect } from "react";
 const MainMenu = () => {
-  // const [logoutUser , logoutUserData] = useLogoutMutation()
+  const [logoutUser, logoutUserData] = useLogoutMutation();
   const dispatch = useDispatch();
   const { anchorE1 } = useSelector((state) => state.service);
   const handleClose = () => {
     dispatch(toggleMainMenu(null));
   };
-  const logout =  () => {
-    // await logoutUser();
+  const logout = async () => {
     handleClose();
+    await logoutUser();
+    console.log("logout>>>>>>>");
   };
   // console.log(logoutUser)
   const account = () => {
     handleClose();
   };
   const toggleTheme = () => {
-    dispatch(toggleColorMode())
+    dispatch(toggleColorMode());
     // console.log("hello")
     handleClose();
-
   };
+  useEffect(() => {
+    if (logoutUserData.isSuccess) {
+      dispatch(addMyInfo(null));
+      console.log(logoutUserData.data);
+      window.location.reload();
+    }
+  }, [logoutUserData.isSuccess]);
+
   return (
     <>
       <Menu
