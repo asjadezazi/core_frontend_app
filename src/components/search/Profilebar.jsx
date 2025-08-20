@@ -1,8 +1,11 @@
 import React from 'react'
 import { Stack, Typography, TextField, Button, Avatar } from "@mui/material";
+import { useSelector } from 'react-redux';
 
 
 const Profilebar = () => {
+        const {darkMode} = useSelector((state)=>state.service)
+    
     return (
         <>
             <Stack
@@ -18,6 +21,7 @@ const Profilebar = () => {
                         cursor: "pointer"
                     }
                 }}
+            
             >
 
                 <Stack
@@ -34,6 +38,7 @@ const Profilebar = () => {
                             variant="h6"
                             fontWeight={"bold"}
                             fontSize={"1rem"}
+                            color={darkMode?"white":"black"}
                         >
                             Samad
                         </Typography>
@@ -41,7 +46,7 @@ const Profilebar = () => {
                         <Typography
                             variant="caption"
                             fontSize={"1.1rem"}
-                            color="gray"
+                            color={darkMode?"white":"black"}
                         >
                          this is bio.....
                         </Typography>
@@ -49,7 +54,8 @@ const Profilebar = () => {
                         <Typography
                             variant="caption"
                             fontSize={"1rem"}
-                            color="gray"
+                            color={darkMode?"white":"black"}
+                            
                         >
                             10 followers
                         </Typography>
@@ -58,11 +64,12 @@ const Profilebar = () => {
                 </Stack>
                 <Button size="medium" sx={{
                     border:"1px solid gray",
-                    color:"black",
+                    color:"gray",
                     borderRadius:"8px",
                     height:40,
-                    p:2
-                    }}>Follow</Button>
+                    p:2,
+                            // bgcolor={darkMode ? "white" : "black"}
+                    }} >Follow</Button>
             </Stack>
         </>
     )

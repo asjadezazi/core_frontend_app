@@ -1,12 +1,17 @@
 import React from 'react'
 import { InputAdornment, TextField } from '@mui/material';
 import { FaSearch } from "react-icons/fa";
+import { useSelector } from 'react-redux';
+
 
 
 const SearchInput = () => {
+      const {darkMode} = useSelector((state)=>state.service)
+  
   return (
     <>
-    <TextField sx={{
+    <TextField
+    sx={{
         width:'90%',
         borderRadius:'15px',
         boxShadow:'5px 5px 5px gray',
@@ -15,23 +20,13 @@ const SearchInput = () => {
         py:1,
         my:5,
         mx:'auto',
-        
-
+        bgcolor:"white"
         }
+
+        
         }
         placeholder='Search-User'
-        // inputProps={{
-        //     startAdornment : (
-        //         <InputAdornment
-        //         position='start'
-        //         sx={{
-        //             color:'black'
-        //         }}
-        //         >
-        //             <FaSearch />
-        //         </InputAdornment>
-        //     )
-        // }}
+       
         InputProps={{
             startAdornment: (
               <InputAdornment 
@@ -39,8 +34,9 @@ const SearchInput = () => {
               sx={{
                 color:'black'
             }}
+
               >
-                   <FaSearch />
+                   <FaSearch color={"black"}/>
               </InputAdornment>
             )
           }}

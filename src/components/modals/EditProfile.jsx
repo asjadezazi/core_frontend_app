@@ -11,14 +11,22 @@ import {
   Typography,
 } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
+import { editProfileModal } from "../../redux/slice";
+import { useDispatch , useSelector} from "react-redux";
+
 
 const EditProfile = () => {
+  const {openEditProfileModal} = useSelector((state)=>state.service);
+  const dispatch = useDispatch()
+
   const _700 = useMediaQuery("(min-width : 700px)");
   const [pic, setPic] = useState();
   const [bio, setBio] = useState();
   const imgRef = useRef();
 
-  const handleClose = () => {};
+  const handleCloseProfile = () => {
+  dispatch(editProfileModal(false))
+  };
 
   const handlePhoto = () => {
     imgRef.current.click();
@@ -26,13 +34,13 @@ const EditProfile = () => {
   return (
     <>
       <Dialog
-        open={true}
-        onClose={handleClose}
+        open={openEditProfileModal}
+        onClose={handleCloseProfile}
         fullWidth
         fullScreen={_700 ? false : true}
       >
-        <Box position={"absolute"} top={20} right={20} onClick={handleClose}>
-          <RxCross2 size={28} />
+        <Box position={"absolute"} top={20} right={20} onClick={handleCloseProfile}>
+          <RxCross2 size={28} onClick={handleCloseProfile} className="image-icon"/>
         </Box>
         <DialogTitle textAlign={"center"} mb={5}>
           Edit Profile

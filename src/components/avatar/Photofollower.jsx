@@ -1,7 +1,10 @@
 import React from "react";
 import { Stack, Badge, Avatar, Typography } from "@mui/material";
+import { useSelector } from 'react-redux';
+
 
 const Photofollower = () => {
+      const {darkMode} = useSelector((state)=>state.service)
   return (
     <>
       <Stack
@@ -9,6 +12,8 @@ const Photofollower = () => {
         alignItems={"center"}
         //  justifyContent={"space-evenly"}
         // m={"auto"}
+   color={darkMode?"white":"black"}
+       
         gap={2}
       >
         <Badge

@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   BrowserRouter,
+// } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Header from "./components/common/Header";
 import Error from "./components/common/Error";
 import Footer from "./components/common/Footer";
@@ -19,25 +26,31 @@ import Repost from "./pages/protected/profile/Repost";
 import SinglePost from "./pages/protected/SinglePost";
 import AddPost from "./components/modals/AddPost";
 import EditProfile from "./components/modals/EditProfile";
-
+import { useMyInfoQuery } from "./redux/service";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const response = true
-  // const [response ,setResponse] = useState(false)
-
+  const { myInfo } = useSelector((state) => state.service);
+  const { data, isError } = useMyInfoQuery();
+  if (isError || !data) {
+    <Router>
+      <Routes>
+        <Route path="/*" element={<Register />} />
+      </Routes>
+    </Router>;
+  }
   return (
     <>
       <Box minHeight={"100vh"}>
         <Router>
           <Routes>
-            {response ? (
+            {myInfo ? (
               <Route exact path="/" element={<Protectedlayout />}>
                 <Route exact path="" element={<Home />} />
                 <Route exact path="post/:id" element={<SinglePost />} />
                 <Route exact path="search" element={<Search />} />
                 <Route exact path="avatar" element={<Avatar />} />
-                <Route exact path="edit" element={<EditProfile />} />
-
+                <Route exact path="edit" element={<AddPost />} />
 
                 <Route exact path="profile" element={<Profilelayout />}>
                   <Route exact path="insta" element={<Insta />} />
@@ -46,9 +59,9 @@ const App = () => {
                 </Route>
               </Route>
             ) : (
-              <Route exact path="/" element={<Register />} />
+              // <Route exact path="/" element={<Register />} />
+              <Route exact path="*" element={<Error />} />
             )}
-            <Route exact path="*" element={<Error />} />
           </Routes>
         </Router>
       </Box>
